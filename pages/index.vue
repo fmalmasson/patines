@@ -1,0 +1,58 @@
+<template lang="html">
+  <div id="app">
+    <v-app light>
+     <main>
+       <section1 id="home"></section1>
+       <section2 id="experience-pro"></section2>
+       <!-- <section3 id="formation"></section3> -->
+       <section4 id="international"></section4>
+
+       <v-footer class="foot">
+         <div class="white--text ml-3">
+           Made with
+           <v-icon class="red--text">favorite</v-icon>
+           by Fabien Malmasson
+         </div>
+       </v-footer>
+     </main>
+   </v-app>
+  </div>
+
+</template>
+
+<script>
+import section1 from './section1.vue'
+import section2 from './section2.vue'
+import section3 from './section3.vue'
+import section4 from './section4.vue'
+
+export default {
+  components: {
+    section1,
+    section2,
+    section3,
+    section4
+  },
+  data: () => ({
+    title: 'Fabien Malmasson'
+  })
+}
+</script>
+
+<style lang="css">
+.subtitle{
+  color: #1697f6;
+}
+.foot{
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(to right, black, #270830);
+}
+#home, #experience-pro {
+  background-color: black;
+  height: 100vh;
+}
+#experience-pro {
+  background-color: black;
+}
+</style>
