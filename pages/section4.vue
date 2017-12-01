@@ -34,7 +34,7 @@
                   @click.native.stop="set_img_source(index), dialog = true"
                     class="card-picture white--text"
                     height="200px"
-                    :src="'../' + card.media">
+                    :src="card.media">
                   <v-container fill-height fluid>
                     <v-layout fill-height>
                       <v-flex xs12 align-end flexbox>
