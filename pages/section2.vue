@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <section>
-      <v-parallax src="berluti.jpg" height="600">
+      <v-parallax src="pinceaux.jpg" height="600">
         <v-layout column align-center justify-center>
           <h2 class="mb-2 ">Avant - Après</h2>
 

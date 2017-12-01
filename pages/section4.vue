@@ -27,11 +27,11 @@
         <v-flex xs12>
           <v-container grid-list-xl>
             <v-layout row wrap align-center>
-              <v-flex v-for="card in cards" xs12 md4>
+              <v-flex v-for="(card, index) in cards" xs12 md4>
                 <v-card
                 @mouseleave="card.show = false">
                   <v-card-media
-                  @click.native="card.show = !card.show"
+                  @click.native.stop="set_img_source(index), dialog = true"
                     class="card-picture white--text"
                     height="200px"
                     :src="'../' + card.media">
@@ -49,6 +49,20 @@
               </v-card>
               </v-flex>
             </v-layout>
+            <v-layout row justify-center>
+    <!-- <v-btn color="primary" dark @click.native.stop="dialog = true">Open Dialog</v-btn> -->
+    <v-dialog v-model="dialog" width="auto">
+      <div class="show_pic_div">
+        <v-btn fab dark small color="primary" @click.native.stop="prev_pic()">
+      <v-icon dark>fa-chevron-left</v-icon>
+    </v-btn>
+      <img class="show_pic" :src="this.cards[img_source].media"/>
+      <v-btn fab dark small color="primary" @click.native.stop="next_pic()">
+      <v-icon dark>fa-chevron-right</v-icon>
+    </v-btn>
+    </div>
+    </v-dialog>
+  </v-layout>
           </v-container>
         </v-flex>
       </v-layout>
@@ -57,9 +71,14 @@
 </template>
 
 <script>
+// import _ from 'lodash'
+
 export default {
   name: 'section4',
   data: () => ({
+    img_source: 0,
+    dialog: false,
+    items: [],
     cards: [
       {
         media: 'patine1.jpg',
@@ -111,12 +130,34 @@ export default {
         show: false
       }
     ]
-  })
+  }),
+  methods: {
+    set_img_source (idx) {
+      this.img_source = idx
+    },
+    prev_pic () {
+      if (this.img_source > 0) {
+        this.img_source -= 1
+      }
+    },
+    next_pic () {
+      if (this.img_source < this.cards.length - 1) {
+        this.img_source += 1
+      }
+    }
+  }
 }
 </script>
 
 <style lang="css">
-
+.show_pic_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.show_pic {
+  height: 80vh;
+}
 .subheading {
   color: #270830;
 }
