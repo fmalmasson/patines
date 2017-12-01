@@ -16,11 +16,55 @@
           <v-flex xs12>
             <v-container grid-list-xl>
               <v-layout row wrap align-center>
-                <v-flex xs12 md4>
-                  <!-- <TwentyTwenty
-  before="avant.jpg"
-  after="apres.jpg" /> -->
+                <v-flex class="comparison" xs12 md4>
+
+                  <div class="image-slider">
+                    <div>
+                      <img src="apres.jpg" />
+                    </div>
+                      <img src="avant.jpg" />
+                  </div>
+
+
+
                 </v-flex>
+                <v-flex class="comparison" xs12 md4>
+
+                  <div class="image-slider">
+                    <div>
+                      <img src="apres.jpg" />
+                    </div>
+                      <img src="avant.jpg" />
+                  </div>
+
+
+
+                </v-flex>
+                <v-flex class="comparison" xs12 md4>
+
+                  <div class="image-slider">
+                    <div>
+                      <img src="apres.jpg" />
+                    </div>
+                      <img src="avant.jpg" />
+                  </div>
+
+
+
+                </v-flex>
+                <v-flex class="comparison" xs12 md4>
+
+                  <div class="image-slider">
+                    <div>
+                      <img src="apres.jpg" />
+                    </div>
+                      <img src="avant.jpg" />
+                  </div>
+
+
+
+                </v-flex>
+
               </v-layout>
             </v-container>
           </v-flex>
@@ -31,12 +75,9 @@
 </template>
 
 <script>
-// import TwentyTwenty from 'vue-twentytwenty'
 
 export default {
-  // components: {
-  //   TwentyTwenty
-  // },
+
   name: 'section2',
   data: () => ({
     cards: [
@@ -131,11 +172,61 @@ export default {
 </script>
 
 <style lang="css">
+.image-slider {
+	position:relative;
+	display: inline-block;
+	line-height: 0;
+}
+.image-slider img {
+	user-select: none;
+	max-width: 400px;
+}
+.image-slider > div {
+	position: absolute;
+	top: 0; bottom: 0; left: 0;
+	width: 25px;
+	max-width: 100%;
+	overflow: hidden;
+	resize: horizontal;
+}
+.image-slider > div:before {
+	content: '';
+	display: block;
+	width: 13px;
+	height: 13px;
+	overflow: hidden;
+	position: absolute;
+	resize: horizontal;
+	right: 3px; bottom: 3px;
+	background-clip: content-box;
+	background: linear-gradient(-45deg, black 50%, transparent 0);
+	-webkit-filter: drop-shadow(0 0 2px black);
+	filter: drop-shadow(0 0 2px black);
+}
+.container.grid-list-xl>.layout>.flex {
+  padding: 0;
+}
 h2{
   font-size: 200px;
 }
 .my-5 {
     margin-top: 0;
     margin-bottom: 0;
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+html {
+  background: #ddd;
+  height: 100%;
+  width: 100%;
+  font-family: roboto;
+  font-weight: 300;
+}
+
+h1 {
+  text-align: center;
+  color: #2FB4E1;
+  font-size: 2rem;
+  line-height: 2rem;
+  margin: 0;
 }
 </style>

@@ -50,9 +50,6 @@ export default {
 }
 #home, #experience-pro {
   background-color: black;
-  height: 100vh;
-}
-#experience-pro {
-  background-color: black;
+  /*height: 100vh;*/
 }
 </style>
