@@ -11,12 +11,12 @@
 
     <section>
       <v-container grid-list-xl>
-        <v-layout row wrap justify-center>
-
+        <v-layout row wrap justify-space-between align-center>
+<!--
           <v-flex xs12>
             <v-container grid-list-xl>
               <v-layout row wrap align-center>
-                <v-flex class="comparison" xs12 md4>
+                <v-flex class="comparison" xs12 md4> -->
 
                   <div class="image-slider">
                     <div>
@@ -27,47 +27,34 @@
 
 
 
-                </v-flex>
-                <v-flex class="comparison" xs12 md4>
+                <!-- </v-flex> -->
+                <!-- <v-flex class="comparison" xs12 md4> -->
 
                   <div class="image-slider">
                     <div>
-                      <img src="apres.jpg" />
+                      <img src="pat2a.jpg" />
                     </div>
-                      <img src="avant.jpg" />
+                      <img src="pat2.jpg" />
                   </div>
 
 
 
-                </v-flex>
-                <v-flex class="comparison" xs12 md4>
+                <!-- </v-flex> -->
+                <!-- <v-flex class="comparison" xs12 md4> -->
 
                   <div class="image-slider">
                     <div>
-                      <img src="apres.jpg" />
+                      <img src="pat3a.jpg" />
                     </div>
-                      <img src="avant.jpg" />
+                      <img src="pat3.jpg" />
                   </div>
 
 
 
-                </v-flex>
-                <v-flex class="comparison" xs12 md4>
-
-                  <div class="image-slider">
-                    <div>
-                      <img src="apres.jpg" />
-                    </div>
-                      <img src="avant.jpg" />
-                  </div>
-
-
-
-                </v-flex>
-
-              </v-layout>
+                <!-- </v-flex> -->
+              <!-- </v-layout>
             </v-container>
-          </v-flex>
+          </v-flex> -->
         </v-layout>
       </v-container>
     </section>
@@ -184,7 +171,7 @@ export default {
 .image-slider > div {
 	position: absolute;
 	top: 0; bottom: 0; left: 0;
-	width: 25px;
+	width: 50%;
 	max-width: 100%;
 	overflow: hidden;
 	resize: horizontal;
@@ -199,7 +186,7 @@ export default {
 	resize: horizontal;
 	right: 3px; bottom: 3px;
 	background-clip: content-box;
-	background: linear-gradient(-45deg, black 50%, transparent 0);
+	background: linear-gradient(-45deg, #270830 50%, transparent 0);
 	-webkit-filter: drop-shadow(0 0 2px black);
 	filter: drop-shadow(0 0 2px black);
 }
