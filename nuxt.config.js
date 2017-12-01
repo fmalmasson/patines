@@ -26,6 +26,9 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: { color: '#35495e' },
+  router: {
+    base: '/patines/'
+  },
   /*
   ** Build configuration
   */
