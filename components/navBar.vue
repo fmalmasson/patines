@@ -1,10 +1,10 @@
 <template lang="html">
   <v-toolbar fixed>
     <div>
-    <v-toolbar-title class="grey--text darken-2">Stephane Villette<span class="title-end"></span></v-toolbar-title>
+      <v-toolbar-title class="grey--text darken-2">Stephane Villette<span class="title-end"></span></v-toolbar-title>
     </div>
     <v-btn icon class="white--text"
-      v-for="icon in icons"
+      v-for="(icon, idx) in icons"
       :href="icon.link"
       v-tooltip:bottom="{ html: icon.tooltip }"
       >
@@ -26,36 +26,41 @@ export default {
     title: 'Fab',
     items: [{
       title: 'Avant / Après',
-      link: '#experience-pro'
+      link: '#before-after'
     },
     {
       title: 'Réalisations',
-      link: '#international'
+      link: '#production'
     }
     ],
     icons: [{
+      name: 'fa fa-paypal',
+      link: 'http://paypal.me/stephaneVILLETTE',
+      tooltip: 'paypal'
+    },
+    {
       name: 'fa fa-facebook-official',
-      link: 'https://github.com/iiseej',
+      link: 'https://www.facebook.com/profile.php?id=100011042260890',
       tooltip: 'profil Facebook'
     },
     {
       name: 'fa-linkedin',
-      link: 'https://linkedin.com/in/fabien-malmasson-564b881b',
+      link: '',
       tooltip: 'profil Linkedin'
     },
     {
       name: 'fa-instagram',
-      link: 'https://linkedin.com/in/fabien-malmasson-564b881b',
+      link: 'https://www.instagram.com/stephanevillette/',
       tooltip: 'profil instagram'
     },
     {
       name: 'fa-youtube',
-      link: 'https://linkedin.com/in/fabien-malmasson-564b881b',
+      link: 'https://www.youtube.com/channel/UCzLFi9nw1juj766PYBk10xA',
       tooltip: 'profil Youtube'
     },
     {
       name: 'fa-google-plus-square',
-      link: 'https://linkedin.com/in/fabien-malmasson-564b881b',
+      link: 'https://plus.google.com/u/0/107294738003869974622/posts',
       tooltip: 'profil Google+'
     },
     {
@@ -82,6 +87,9 @@ a{
 }
 a:hover{
   color: black;
+}
+i:hover {
+  color: white;
 }
 .item {
   font-weight: 700;

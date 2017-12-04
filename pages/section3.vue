@@ -1,90 +1,203 @@
 <template lang="html">
   <div>
     <section>
-      <v-parallax src="formation.jpg" height="380">
+      <v-parallax src="sec4.jpg" height="600">
         <v-layout column align-center justify-center>
-          <h2>Formation</h2>
-          <v-btn
-            class="blue lighten-2 mt-5"
-            dark
-            large
-            href="../cv.pdf">
-            Télécharger mon CV
-          </v-btn>
+          <h2 class="mb-2 ">Réalisations</h2>
         </v-layout>
       </v-parallax>
     </section>
 
     <section>
-      <v-container grid-list-xl>
-        <v-layout row wrap justify-center class="my-5">
-          <v-flex xs12 sm4>
-            <v-card class="elevation-0 transparent">
-              <v-card-title primary-title class="layout justify-center">
-                <div class="headline">IMIE Nantes, Bac +2</div>
-                <div class="headline">Développeur Logiciel</div>
-              </v-card-title>
-              <v-card-text>
-                Titre de niveau 3 réalisé en 9 mois dont 3 mois de stage.
-                <p>J'ai choisi cette formation car l'IMIE proposait des cours et un stage qui, de mon point de vue, allait être le tremplin idéal pour ma reconversion.
-                  La formation a débuté par 6 mois de cours où j'ai appris les bases indispensables du développement.
-                  J'ai travaillé sur les technologies suivantes : </br> <strong>HTML & CSS, PHP, SYMPHONY, MYSQL, JAVASCRIPT, NODEJS, JQUERY, MONGODB ...</strong></br></br>
-                  J'ai ensuite intégré l'agence digitale Léo by Antares pour un <strong>stage de 3 mois</strong> en tant que développeur front-end.
-                </p>
+      <v-layout
+        column
+        wrap
+        align-center>
+        <v-flex xs12  class="select-shoes">
+          <v-select
+              v-bind:items="selectSorted"
+              v-model="selection"
+              label="filtrer par marque"
+              autocomplete
+              clearable
+            ></v-select>
+        </v-flex>
+
+
+        <div class="shoes-container">
+          <v-container grid-list-x5>
+            <v-layout row wrap justify-center>
+          <v-flex class="cards-show" v-for="(card, index) in cards" xs12 sm6 md4 v-if="card.brand === selection || selection === ''">
+            <v-card @mouseleave="card.show = false">
+              <v-card-media
+                @click.native.stop="set_img_source(index), dialog = true"
+                class="card-picture white--text"
+                height="250px"
+                :src="card.media">
+                <v-container fill-height fluid>
+                  <v-layout fill-height>
+                    <v-flex xs12 align-end flexbox>
+                      <span class="card-title">{{ card.headline }}</span>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card-media>
+              <v-card-text v-show="card.show">
+                {{ card.brand }}
               </v-card-text>
             </v-card>
           </v-flex>
-          <v-flex xs12 sm4 offset-sm1>
-            <v-card class="elevation-0 transparent">
-              <v-card-title primary-title class="layout justify-center">
-                <div class="headline">Inseec Bordeaux, Bac +4</div>
-                <div class="headline">Bachelor in Business Administration</div>
-              </v-card-title>
-              <v-card-text>
-                Cursus international, 15 mois de stages en entreprise
-                <p>Je suis extrêmement content d'avoir réalisé ce parcours à vocation internationale qui a grandement construit la personne que je suis devenue.
-                Au delà de m'avoir apporté des connaissances techniques en Marketing, Finance et <strong>Management</strong>, l'Inseec m'a permis de m'ouvrir sur le monde, sur les personnes, et m'a fait rencontré des amis pour la vie.
-               J'ai eu la chance d'aller étudier <strong>un semestre académique à Hong-Kong</strong>, un mois à la Fac en <strong>Espagne</strong>, de réaliser un stage à <strong>Londres</strong> et deux stages à Paris. </p>
-              </v-card-text>
-            </v-card>
+          <v-flex xs12>
+            <v-dialog v-model="dialog" width="auto">
+              <div class="show_pic_div">
+                <v-btn fab dark small color="primary" @click.native.stop="prev_pic()">
+                  <v-icon dark>fa-chevron-left</v-icon>
+                </v-btn>
+                <img class="show_pic" :src="this.cards[img_source].media"/>
+                <v-btn fab dark small color="primary" @click.native.stop="next_pic()">
+                  <v-icon dark>fa-chevron-right</v-icon>
+                </v-btn>
+              </div>
+            </v-dialog>
           </v-flex>
         </v-layout>
       </v-container>
+    </div>
+  </v-layout>
     </section>
-</div>
+  </div>
 </template>
 
 <script>
+
 export default {
-  name: 'section2',
+  name: 'section4',
   data: () => ({
-    skills:
-    [
+    selection: '',
+    img_source: 0,
+    dialog: false,
+    items: [
+      'S. Jimenez',
+      'Lavabre Cadet',
+      'Loding',
+      'Crockett & Jones',
+      'Berluti',
+      'Corthay',
+      'Lobb',
+      'J. Melinge'
+    ],
+    cards: [
       {
-        name: 'HTML'
+        media: 'patine1.jpg',
+        headline: 'Bespoke Shoe, Stéphane JIMENEZ',
+        brand: 'S. Jimenez',
+        type: 'Bénévolat',
+        comp: 'Vuejs',
+        show: false
       },
       {
-        name: 'CSS'
+        media: 'patine2.jpg',
+        headline: 'Bespoke Shoe, Stéphane JIMENEZ',
+        brand: 'Crockett & Jones',
+        type: 'CDI',
+        comp: 'Business Plan',
+        show: false
       },
       {
-        name: 'Javascript'
+        media: 'patine3.jpg',
+        headline: 'Bespoke Shoe, Stéphane JIMENEZ',
+        brand: 'S. Jimenez',
+        type: 'CDI',
+        comp: 'Management',
+        show: false
       },
       {
-        name: 'PHP'
+        company: 'MACIF',
+        media: 'patine4.jpg',
+        headline: 'Bespoke Shoe, Stéphane JIMENEZ',
+        brand: 'J. Malinge',
+        type: 'CDI',
+        comp: 'Management',
+        show: false
       },
       {
-        name: 'Versioning'
+        media: 'patine5.jpg',
+        headline: 'Bespoke Shoe, Stéphane JIMENEZ',
+        brand: 'Berluti',
+        type: 'Volontariat International en Administration',
+        comp: 'Management',
+        show: false
       },
       {
-        name: 'DevTools'
+        media: 'patine6.jpg',
+        headline: 'Bespoke Shoe, Stéphane JIMENEZ',
+        brand: 'Loding',
+        type: 'Volontariat International en Administration',
+        comp: 'Management',
+        show: false
       },
       {
-        name: 'Command Line'
+        media: 'maxsizejpg.jpg',
+        headline: 'Bespoke Shoe, Stéphane JIMENEZ',
+        brand: 'Lobb',
+        type: 'Volontariat International en Administration',
+        comp: 'Management',
+        show: false
       }
     ]
-  })
+  }),
+  computed: {
+    selectSorted () {
+      return this.items.sort()
+    }
+  },
+  methods: {
+    set_img_source (idx) {
+      this.img_source = idx
+    },
+    prev_pic () {
+      if (this.img_source > 0) {
+        this.img_source -= 1
+      }
+    },
+    next_pic () {
+      if (this.img_source < this.cards.length - 1) {
+        this.img_source += 1
+      }
+    }
+  }
 }
 </script>
 
-<style lang="css">
+<style lang="css" >
+.shoes-container{
+  width: 100vw;
+}
+.select-shoes {
+  width: 27vw;
+}
+.cards-show {
+  margin-bottom: 5px;
+}
+.show_pic_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.show_pic {
+  max-height: 80vh;
+  width: auto;
+}
+.subheading {
+  color: #270830;
+}
+.card-picture{
+  cursor: pointer;
+  width: 100%;
+}
+.card-title{
+  text-align: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.44);
+}
 </style>

@@ -3,9 +3,9 @@
     <v-app light>
      <main>
        <section1 id="home"></section1>
-       <section2 id="experience-pro"></section2>
+       <section2 id="before-after"></section2>
        <!-- <section3 id="formation"></section3> -->
-       <section4 id="international"></section4>
+       <section3 id="production"></section3>
 
        <v-footer class="foot">
          <div class="white--text ml-3">
@@ -24,17 +24,15 @@
 import section1 from './section1.vue'
 import section2 from './section2.vue'
 import section3 from './section3.vue'
-import section4 from './section4.vue'
 
 export default {
   components: {
     section1,
     section2,
-    section3,
-    section4
+    section3
   },
   data: () => ({
-    title: 'Fabien Malmasson'
+    title: 'Stephane Villette'
   })
 }
 </script>
@@ -48,8 +46,11 @@ export default {
   justify-content: center;
   background-image: linear-gradient(to right, black, #270830);
 }
-#home, #experience-pro {
+#home, #before-after {
   background-color: black;
   /*height: 100vh;*/
+}
+#production {
+  min-height: 100vh;
 }
 </style>
